@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## General info
+This project is simple online book store
 
-Things you may want to cover:
+## Created by
+- [nieisnuje](https://github.com/nieisnuje)
+- [zzhiharevich](https://github.com/zzhiharevich)
+- [artloko](https://github.com/artloko)
+	
+## Technologies
+Web version is created with:
+* Ruby: 2.6.5
+* Rails: 6.0.3
+* PostgreSQL: 13.0
+	
+## Setup
+To run this project, clone this repo and install dependencies OR use Docker:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ bundle install
+$ rails db:setup
+$ rails s
+```
