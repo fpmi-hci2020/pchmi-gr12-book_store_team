@@ -11,3 +11,4 @@ exclude:
 - /vendor/.*
 - /spec/rails_helper\.rb
 - /spec/spec_helper\.rb
+- /babel.config\.js
