@@ -1,0 +1,578 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/authors":
+    get:
+      summary: Retrieves all authors
+      description: List all authors
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: authors found
+          content: {}
+    post:
+      summary: Create an author
+      description: Create new author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '201':
+          description: author created
+          content: {}
+        '400':
+          description: author creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - author
+  "/api/v1/authors/{id}":
+    get:
+      summary: Retrieves an author
+      description: List info about one author (by internal id)
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: author found
+          content: {}
+        '404':
+          description: author not found
+          content: {}
+    put:
+      summary: Update an author
+      description: Update a author
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: author updated
+          content: {}
+        '400':
+          description: author update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - author
+    delete:
+      summary: Delete an author
+      description: Delete a author
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Destroy the author
+          content: {}
+  "/api/v1/books":
+    get:
+      summary: Retrieves all books
+      description: List all books
+      tags:
+      - Books
+      responses:
+        '200':
+          description: Books found
+          content: {}
+    post:
+      summary: Create a book
+      description: Create new book
+      tags:
+      - Books
+      parameters: []
+      responses:
+        '201':
+          description: Book created
+          content: {}
+        '400':
+          description: Book creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                book:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    publishing_year:
+                      type: integer
+                    quantity:
+                      type: integer
+                    delivery_date:
+                      type: string
+                      format: date-time
+                  required:
+                  - name
+              required:
+              - book
+  "/api/v1/books/{id}":
+    get:
+      summary: Retrieves a book
+      description: List info about one book (by internal id)
+      tags:
+      - Books
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Book found
+          content: {}
+        '404':
+          description: Book not found
+          content: {}
+    put:
+      summary: Update a book
+      description: Update a book
+      tags:
+      - Books
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: Book updated
+          content: {}
+        '400':
+          description: Book update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                book:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    publishing_year:
+                      type: integer
+                    quantity:
+                      type: integer
+                    delivery_date:
+                      type: string
+                      format: date-time
+                  required:
+                  - name
+              required:
+              - book
+    delete:
+      summary: Delete a book
+      description: Delete a book
+      tags:
+      - Books
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Destroy the book
+          content: {}
+  "/api/v1/favorites":
+    get:
+      summary: Retrieves all favorites
+      description: List all favorites
+      tags:
+      - Favorites
+      responses:
+        '200':
+          description: favorites found
+          content: {}
+    post:
+      summary: Create a favorite
+      description: Create new favorite
+      tags:
+      - Favorites
+      parameters: []
+      responses:
+        '201':
+          description: favorite created
+          content: {}
+        '400':
+          description: favorite creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                favorite:
+                  type: object
+                  properties:
+                    user_id:
+                      type: integer
+                    book_id:
+                      type: integer
+                  required:
+                  - user_id
+                  - book_id
+              required:
+              - favorite
+  "/api/v1/favorites/{id}":
+    get:
+      summary: Retrieves a favorite
+      description: List info about one favorite (by internal id)
+      tags:
+      - Favorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: favorite found
+          content: {}
+        '404':
+          description: favorite not found
+          content: {}
+    put:
+      summary: Update a favorite
+      description: Update a favorite
+      tags:
+      - Favorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: favorite updated
+          content: {}
+        '400':
+          description: favorite update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                favorite:
+                  type: object
+                  properties:
+                    user_id:
+                      type: integer
+                    book_id:
+                      type: integer
+                  required:
+                  - user_id
+                  - book_id
+              required:
+              - favorite
+    delete:
+      summary: Delete a favorite
+      description: Delete a favorite
+      tags:
+      - Favorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Destroy the favorite
+          content: {}
+  "/api/v1/genres":
+    get:
+      summary: Retrieves all genres
+      description: List all genres
+      tags:
+      - Genres
+      responses:
+        '200':
+          description: genres found
+          content: {}
+    post:
+      summary: Create a genre
+      description: Create new genre
+      tags:
+      - Genres
+      parameters: []
+      responses:
+        '201':
+          description: genre created
+          content: {}
+        '400':
+          description: genre creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                genre:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - genre
+  "/api/v1/genres/{id}":
+    get:
+      summary: Retrieves a genre
+      description: List info about one genre (by internal id)
+      tags:
+      - Genres
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: genre found
+          content: {}
+        '404':
+          description: genre not found
+          content: {}
+    put:
+      summary: Update a genre
+      description: Update a genre
+      tags:
+      - Genres
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: genre updated
+          content: {}
+        '400':
+          description: genre update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                genre:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - genre
+    delete:
+      summary: Delete a genre
+      description: Delete a genre
+      tags:
+      - Genres
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Destroy the genre
+          content: {}
+  "/api/v1/orders":
+    get:
+      summary: Retrieves all orders
+      description: List all orders
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: orders found
+          content: {}
+    post:
+      summary: Create an order
+      description: Create new order
+      tags:
+      - Orders
+      parameters: []
+      responses:
+        '201':
+          description: order created
+          content: {}
+        '400':
+          description: order creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order:
+                  type: object
+                  properties:
+                    creation_date:
+                      type: string
+                      format: date-time
+                    delivery_date:
+                      type: string
+                      format: date-time
+                    amount:
+                      type: integer
+                    user_id:
+                      type: integer
+                    book_id:
+                      type: integer
+                  required:
+                  - user_id
+                  - book_id
+              required:
+              - order
+  "/api/v1/orders/{id}":
+    get:
+      summary: Retrieves an order
+      description: List info about one order (by internal id)
+      tags:
+      - Orders
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: order found
+          content: {}
+        '404':
+          description: order not found
+          content: {}
+    put:
+      summary: Update an order
+      description: Update a order
+      tags:
+      - Orders
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: order updated
+          content: {}
+        '400':
+          description: order update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order:
+                  type: object
+                  properties:
+                    creation_date:
+                      type: string
+                      format: date-time
+                    delivery_date:
+                      type: string
+                      format: date-time
+                    amount:
+                      type: integer
+                    user_id:
+                      type: integer
+                    book_id:
+                      type: integer
+                  required:
+                  - user_id
+                  - book_id
+              required:
+              - order
+    delete:
+      summary: Delete an order
+      description: Delete a order
+      tags:
+      - Orders
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Destroy the order
+          content: {}
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
