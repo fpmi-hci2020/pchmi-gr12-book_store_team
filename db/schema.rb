@@ -10,9 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_11_14_090407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id"
+    t.index ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "name"
+    t.integer "publishing_year"
+    t.integer "quantity"
+    t.datetime "delivery_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "books_genres", id: false, force: :cascade do |t|
+    t.bigint "genre_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id"
+    t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_favorites_on_book_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "creation_date"
+    t.datetime "delivery_date"
+    t.integer "amount"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_orders_on_book_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "address", default: ""
+    t.string "name", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "favorites", "books"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "orders", "books"
+  add_foreign_key "orders", "users"
 end
