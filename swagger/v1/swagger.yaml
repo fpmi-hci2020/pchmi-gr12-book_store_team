@@ -572,7 +572,7 @@ paths:
           description: Destroy the order
           content: {}
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
       default: 'bookstoreprchmi.herokuapp.com'
