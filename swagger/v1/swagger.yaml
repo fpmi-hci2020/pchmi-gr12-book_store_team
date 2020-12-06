@@ -4,6 +4,33 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/author_books":
+    post:
+      summary: Create author_book
+      description: Create a relationship between a book and an author
+      tags:
+      - Authors - Books
+      parameters: []
+      responses:
+        '201':
+          description: Author_book created
+          content: {}
+        '400':
+          description: Book creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author_id:
+                  type: integer
+                book_id:
+                  type: integer
+              required:
+              - author_id
+              - book_id
   "/api/v1/authors":
     get:
       summary: Retrieves all authors
@@ -109,6 +136,33 @@ paths:
         '200':
           description: Destroy the author
           content: {}
+  "/api/v1/book_genres":
+    post:
+      summary: Create book_genre
+      description: Create a relationship between a book and a genre
+      tags:
+      - Genres - Books
+      parameters: []
+      responses:
+        '201':
+          description: Genre_book created
+          content: {}
+        '400':
+          description: Book creation failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                genre_id:
+                  type: integer
+                book_id:
+                  type: integer
+              required:
+              - genre_id
+              - book_id
   "/api/v1/books":
     get:
       summary: Retrieves all books
@@ -142,6 +196,8 @@ paths:
                   type: object
                   properties:
                     name:
+                      type: string
+                    image_url:
                       type: string
                     publishing_year:
                       type: integer
@@ -201,6 +257,8 @@ paths:
                   type: object
                   properties:
                     name:
+                      type: string
+                    image_url:
                       type: string
                     publishing_year:
                       type: integer
@@ -572,7 +630,7 @@ paths:
           description: Destroy the order
           content: {}
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: localhost:3000
+      default: bookstoreprchmi.herokuapp.com

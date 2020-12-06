@@ -7,12 +7,12 @@ module Api
       def index
         @books = Book.all
 
-        render json: @books
+        render json: @books, include: [:authors, :genres]
       end
 
       # GET /books/1.json
       def show
-        render json: @book
+        render json: @book, include: [:authors, :genres]
       end
 
       # POST /books.json
@@ -49,7 +49,7 @@ module Api
       end
 
       def book_params
-        params.require(:book).permit(:name, :publishing_year, :quantity, :delivery_date)
+        params.require(:book).permit(:name, :image_url, :publishing_year, :quantity, :delivery_date)
       end
     end
   end
