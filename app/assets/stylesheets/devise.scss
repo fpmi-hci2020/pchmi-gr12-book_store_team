@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+  background-color: #F5F5F5 !important;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: #5E855E !important;
+  border-color: #5E855E !important;
+}
+
+a {
+  transition: background-color .5s;
+}
+
+a:hover {
+  background-color: #5E855E !important;
+  color: #F5F5F5 !important;
+ } 
