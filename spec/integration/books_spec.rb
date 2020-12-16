@@ -51,6 +51,7 @@ describe 'Books API' do
             type: :object,
             properties: {
               name: { type: :string },
+              image_url: { type: :string },
               publishing_year: { type: :integer },
               quantity: { type: :integer },
               delivery_date: { type: :string, format: 'date-time' }
@@ -89,6 +90,7 @@ describe 'Books API' do
             type: :object,
             properties: {
               name: { type: :string },
+              image_url: { type: :string },
               publishing_year: { type: :integer },
               quantity: { type: :integer },
               delivery_date: { type: :string, format: 'date-time' }

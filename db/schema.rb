@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_090407) do
+ActiveRecord::Schema.define(version: 2020_12_06_133706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "author_books", id: false, force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["author_id", "book_id"], name: "index_author_books_on_author_id_and_book_id"
+    t.index ["book_id", "author_id"], name: "index_author_books_on_book_id_and_author_id"
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -21,11 +28,11 @@ ActiveRecord::Schema.define(version: 2020_11_14_090407) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "authors_books", id: false, force: :cascade do |t|
-    t.bigint "author_id", null: false
+  create_table "book_genres", id: false, force: :cascade do |t|
+    t.bigint "genre_id", null: false
     t.bigint "book_id", null: false
-    t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id"
-    t.index ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id"
+    t.index ["book_id", "genre_id"], name: "index_book_genres_on_book_id_and_genre_id"
+    t.index ["genre_id", "book_id"], name: "index_book_genres_on_genre_id_and_book_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -35,13 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_090407) do
     t.datetime "delivery_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "books_genres", id: false, force: :cascade do |t|
-    t.bigint "genre_id", null: false
-    t.bigint "book_id", null: false
-    t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id"
-    t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id"
+    t.string "image_url"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_090407) do
     t.string "name", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
