@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :author_books
       resources :book_genres
       resources :orders
+      resources :users
     end
   end
 
