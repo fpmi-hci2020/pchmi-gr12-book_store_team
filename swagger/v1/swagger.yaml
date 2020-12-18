@@ -546,6 +546,8 @@ paths:
                       type: integer
                     book_id:
                       type: integer
+                    status:
+                      type: integer
                   required:
                   - user_id
                   - book_id
@@ -609,6 +611,8 @@ paths:
                       type: integer
                     book_id:
                       type: integer
+                    status:
+                      type: integer
                   required:
                   - user_id
                   - book_id
@@ -629,6 +633,74 @@ paths:
         '200':
           description: Destroy the order
           content: {}
+  "/api/v1/users":
+    get:
+      summary: Retrieves all users
+      description: List all users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: users found
+          content: {}
+  "/api/v1/users/{id}":
+    get:
+      summary: Retrieves an user
+      description: List info about one user (by internal id)
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content: {}
+        '404':
+          description: user not found
+          content: {}
+    put:
+      summary: Update an user
+      description: Update a user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: user updated
+          content: {}
+        '400':
+          description: user update failed for parameter missing
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    address:
+                      type: string
+                    name:
+                      type: string
+                    avatar_url:
+                      type: string
+                  required:
+                  - id
+              required:
+              - user
 servers:
 - url: https://{defaultHost}
   variables:

@@ -54,7 +54,8 @@ describe 'Books API' do
               delivery_date: { type: :string, format: 'date-time' },
               amount: { type: :integer },
               user_id: { type: :integer },
-              book_id: { type: :integer }
+              book_id: { type: :integer },
+              status: { type: :integer }
             },
             required: ['user_id', 'book_id']
           }
@@ -93,7 +94,8 @@ describe 'Books API' do
               delivery_date: { type: :string, format: 'date-time' },
               amount: { type: :integer },
               user_id: { type: :integer },
-              book_id: { type: :integer }
+              book_id: { type: :integer },
+              status: { type: :integer }
             },
             required: ['user_id', 'book_id']
           }

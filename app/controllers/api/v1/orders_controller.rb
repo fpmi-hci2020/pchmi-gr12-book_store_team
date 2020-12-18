@@ -49,7 +49,7 @@ module Api
       end
 
       def order_params
-        params.require(:order).permit(:creation_date, :delivery_date, :amount, :user_id, :book_id)
+        params.require(:order).permit(:creation_date, :delivery_date, :amount, :user_id, :book_id, :status)
       end
     end
   end
