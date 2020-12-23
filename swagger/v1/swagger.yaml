@@ -197,6 +197,8 @@ paths:
                   properties:
                     name:
                       type: string
+                    description:
+                      type: string
                     image_url:
                       type: string
                     publishing_year:
@@ -257,6 +259,8 @@ paths:
                   type: object
                   properties:
                     name:
+                      type: string
+                    description:
                       type: string
                     image_url:
                       type: string
