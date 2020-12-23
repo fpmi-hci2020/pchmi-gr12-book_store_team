@@ -1,0 +1,28 @@
+.main-page-content {
+    height: 100%;
+
+    & .desc-menu-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 10rem;
+        margin: 10px 0;
+    }
+
+    & .desc-big-card {
+        height: 10rem;
+        margin: 7px 0;
+    }
+
+    & .desc-filtered-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 10rem;
+        margin: 7px 0;
+    }
+}
+
+hr{
+    margin: 0;
+}
