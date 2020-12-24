@@ -1,0 +1,43 @@
+.basket_content {
+    height: 88%;
+    .content {
+        display: flex;
+    }
+}
+
+.orders {
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 0 5px;
+    border-radius: 7px;
+    overflow: scroll;
+}
+
+.order_list {
+    background-color: #4d724d94;
+    color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin: 0 5px;
+
+    & p, h3, h4 {
+        padding: 0;
+        margin: 4px 0;
+    }
+
+    &__header {
+        position: relative;
+        & p {
+            width: 50%;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    &__title_content {
+        display: flex;
+        justify-content: space-between;
+    }
+}
