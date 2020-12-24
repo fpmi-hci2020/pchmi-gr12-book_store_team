@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :favorites
   resources :books
   resources :orders
-  devise_for :users
+  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "user" }
+
+  get 'catalog', to: 'books#index'
+  get 'basket', to: 'orders#index'
 
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do

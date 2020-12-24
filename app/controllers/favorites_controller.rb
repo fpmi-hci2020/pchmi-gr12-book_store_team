@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
   # GET /favorites.json
   def index
     @favorites = Favorite.all
+    @current_user_id = current_user.id
   end
 
   # GET /favorites/1
