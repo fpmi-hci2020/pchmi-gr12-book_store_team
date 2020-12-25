@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'rack-cors'
 gem 'devise'
 gem 'rswag'
+gem 'has_scope'
 
 gem 'react-rails'
 gem 'devise-bootstrap-views', '~> 1.0'
