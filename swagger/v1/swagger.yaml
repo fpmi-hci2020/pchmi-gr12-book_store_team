@@ -205,6 +205,8 @@ paths:
                       type: integer
                     quantity:
                       type: integer
+                    price:
+                      type: decimal
                     delivery_date:
                       type: string
                       format: date-time
@@ -268,6 +270,8 @@ paths:
                       type: integer
                     quantity:
                       type: integer
+                    price:
+                      type: decimal
                     delivery_date:
                       type: string
                       format: date-time

@@ -3,9 +3,15 @@ module Api
     class BooksController < ApplicationController
       before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+      has_scope :by_author, only: :index
+      has_scope :by_genre, only: :index
+      has_scope :by_title, only: :index
+
       # GET /books.json
       def index
-        @books = Book.all
+        @books = apply_scopes(Book).
+        includes(:authors, :genres).
+        all
 
         render json: @books, include: [:authors, :genres]
       end
