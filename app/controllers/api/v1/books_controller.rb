@@ -55,7 +55,7 @@ module Api
       end
 
       def book_params
-        params.require(:book).permit(:name, :image_url, :publishing_year, :quantity, :delivery_date, :description)
+        params.require(:book).permit(:name, :image_url, :publishing_year, :quantity, :delivery_date, :description, :price)
       end
     end
   end
