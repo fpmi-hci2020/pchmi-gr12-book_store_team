@@ -55,6 +55,7 @@ describe 'Books API' do
               image_url: { type: :string },
               publishing_year: { type: :integer },
               quantity: { type: :integer },
+              price: { type: :decimal },
               delivery_date: { type: :string, format: 'date-time' }
             },
             required: ['name']
@@ -95,6 +96,7 @@ describe 'Books API' do
               image_url: { type: :string },
               publishing_year: { type: :integer },
               quantity: { type: :integer },
+              price: { type: :decimal },
               delivery_date: { type: :string, format: 'date-time' }
             },
             required: ['name']
