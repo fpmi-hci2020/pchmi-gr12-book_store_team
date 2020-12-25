@@ -9,7 +9,7 @@ class Book < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :by_title, -> (value) { where(title: value) }
+  scope :by_title, -> (value) { where(name: value) }
   scope :by_author, -> (author_name) { joins(:authors).where(authors: { name: author_name }) }
   scope :by_genre, -> (genre_name) { joins(:genres).where(genres: { name: genre_name }) }
 end
