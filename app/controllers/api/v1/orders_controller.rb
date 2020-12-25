@@ -7,12 +7,12 @@ module Api
       def index
         @orders = Order.all
 
-        render json: @orders
+        render json: @orders, include: [:book]
       end
 
       # GET /orders/1.json
       def show
-        render json: @order
+        render json: @order, include: [:book]
       end
 
       # POST /orders.json
