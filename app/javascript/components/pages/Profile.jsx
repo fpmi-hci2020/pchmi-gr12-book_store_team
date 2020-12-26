@@ -204,10 +204,10 @@ const Profile = (props) => {
             <a href="/favorites" className="navigation__card">
               <p>Избранное</p>
             </a>
-            <a href="/orders" className="navigation__card">
+            <a href="/my_orders" className="navigation__card">
               <p>Купленные книги</p>
             </a>
-            <a href="/rents" className="navigation__card">
+            <a href="/rent" className="navigation__card">
               <p>Арендованные книги</p>
             </a>
           </div>
