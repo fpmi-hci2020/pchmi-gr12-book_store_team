@@ -98,7 +98,7 @@ class BookPage extends Component {
           <div className="book_box">
             <div className="book_container">
               <div className="book_container__image">
-                <img alt="Book" src={book.image_url} height="100%" />
+                <img alt="Book" src={book.image_url} height="350px" width="225px" />
               </div>
               <div className="book_container__info">
                 <h1>{book.name}</h1>
