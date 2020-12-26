@@ -1,3 +1,65 @@
-<div class="col-lg-12">
-  <%= react_component("pages/Profile") %>
+
+<body>
+  <div class="header">
+  <a href="/">
+    <img src="assets/logo.png" width="200px" height="100%" alt="logo" />
+  </a>
 </div>
+
+<div class="profile_content">
+  <div class="content">
+    <div className="user-info__container">
+
+      <div class="user-info__text-info">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="update_profile__fio">
+              <h3 class="user-info__text-info__fio">Иван Иванович</h3>
+            </div>
+            <div class="user-info__text-info__delivery-info">
+              <div class="user-info__text-info__delivery-info__content">
+                <p>Email</p>
+                <p><%= f.email_field :email, autofocus: false, autocomplete: "email" %></p>
+              </div>
+              <div class="user-info__text-info__delivery-info__content">
+                <p>Адрес доставки</p>
+                <p><%= f.text_field :address, autofocus: false, autocomplete: "address" %></p>
+              </div>
+
+              <div class="user-info__text-info__delivery-info__content">
+                <%= f.label :Пароль %>
+                <%= f.password_field :password, autofocus: false, autocomplete: "new-password" %>
+              </div>
+
+              <div class="user-info__text-info__delivery-info__content">
+                <%= f.label :Подтверждение_пароля %>
+                <%= f.password_field :password_confirmation, autofocus: false, autocomplete: "new-password" %>
+              </div>
+
+              <div class="user-info__text-info__delivery-info__content">
+                <%= f.label :Текущий_пароль %> 
+                <%= f.password_field :current_password, autofocus: false, autocomplete: "current-password" %>
+              </div>
+              </div>
+              <div class="actions" style="margin:7px;">
+              <%= f.submit "Обновить" %>
+            </div>
+
+      <% end %>
+          </div>
+        </div>
+<div class="navigation">
+    <a href="/favorites" class="navigation__card">
+      <p>Избранное</p>
+    </a>
+    <a href="/orders" class="navigation__card">
+      <p>Купленные книги</p>
+    </a>
+    <a href="/rents" class="navigation__card">
+      <p>Арендованные книги</p>
+    </a>
+  </div>
+</div>
+</div>
+</body>

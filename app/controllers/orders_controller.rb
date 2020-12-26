@@ -5,11 +5,13 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @current_user_id = current_user.id
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @current_user_id = current_user.id
   end
 
   # GET /orders/new

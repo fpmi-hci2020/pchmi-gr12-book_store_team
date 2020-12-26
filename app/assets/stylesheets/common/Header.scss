@@ -1,8 +1,9 @@
 .header {
-    height: 10%;
+    height: 3rem;
     display: flex;
     justify-content: center;
     position: relative;
+    margin-top: 1rem;
 
     & .user-icon {
         border: 1px solid black;
@@ -17,8 +18,8 @@
         text-decoration: none;
 
         & p {
-            margin: 25% 0;
-            color: blue;
+            margin: 20% 0;
+            color: darkolivegreen;
         }
     }
 }

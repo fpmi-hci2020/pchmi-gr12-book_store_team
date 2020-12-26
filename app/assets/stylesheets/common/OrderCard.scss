@@ -12,6 +12,9 @@
     &__image {
         width: 20%;
         height: 90%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
         margin: auto 5px;
     }
 
@@ -43,14 +46,18 @@
             font-size: 40px;
             color: white;
         }
+
+        &__times:hover {
+            color: red;
+        }
     }
 
     &__text {
         margin: 0;
         &__price {
             position: absolute;
-            bottom: 28px;
-            right: 5px;
+            bottom: 3px;
+            right: 3rem;
             width: 100px;
         }
 

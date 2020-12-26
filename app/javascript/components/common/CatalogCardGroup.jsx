@@ -1,10 +1,14 @@
 import React from "react";
+import img from "images/img.jpg";
 
 const catalogCardGroup = ({
   cards,
   withoutIcons,
   buttonText,
   addToFavorites,
+  addToCart,
+  rent,
+  returnBook,
 }) => {
   const n = Math.floor(+(cards.length / 3)) + 1;
 
@@ -26,40 +30,66 @@ const catalogCardGroup = ({
                         className="catalog_card_image_container"
                       >
                         <img
-                          className="catalog_card_image"
+                          alt="Book"
                           src={cards[index].image_url}
-                          width="100%"
                           height="100%"
                         />
                       </a>
-                      <p className="title1">{cards[index].name}</p>
+                      <p className="title1" style={{ paddingLeft: 3 + "px" }}>
+                        {cards[index].name && cards[index].name.length > 60
+                          ? `${cards[index].name.slice(0, 60)}...`
+                          : cards[index].name}
+                      </p>
                       <p className="title2">
-                        {cards[index].authors[0] &&
+                        {cards.authors &&
+                          cards[index].authors[0] &&
                           cards[index].authors[0].name}
                       </p>
                       {!withoutIcons && (
                         <div className="options">
                           <div
                             className="icon icon__star"
-                            onClick={addToFavorites}
+                            onClick={() =>
+                              addToFavorites(cards[index].id, cards[index].name)
+                            }
                           >
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i className="fa fa-star" aria-hidden="true"></i>
                           </div>
-                          <div className="icon icon__plus">
+                          <div
+                            className="icon icon__plus"
+                            onClick={() =>
+                              addToCart(cards[index].id, cards[index].name)
+                            }
+                          >
+                            {" "}
                             <i
-                              class="fa fa-shopping-basket"
+                              className="fa fa-shopping-basket"
                               aria-hidden="true"
                             ></i>
                           </div>
-                          <div className="icon icon__rent">
+                          <div
+                            className="icon icon__rent"
+                            onClick={() =>
+                              rent(cards[index].id, cards[index].name)
+                            }
+                          >
                             <p>
-                              <b>RENT</b>
+                              <b>АРЕНДА</b>
                             </p>
                           </div>
                         </div>
                       )}
                       {buttonText && (
-                        <button className="return-button">
+                        <button
+                          className="return-button"
+                          onClick={
+                            returnBook
+                              ? () =>
+                                  returnBook(cards[index].id, cards[index].name)
+                              : () =>
+                                  addToCart(cards[index].id, cards[index].name)
+                          }
+                        >
                           <b>{buttonText}</b>
                         </button>
                       )}

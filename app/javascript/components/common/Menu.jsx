@@ -9,8 +9,8 @@ const menu = ({ links }) => {
     "Вопросы",
     "О компании",
   ];
-  //ссылки для перехода на страницы
-  const linksMenu = ["/catalog", "/basket", "/rent", "/", "/"]; //каталог, корзина, аренда, вопросы, о компании
+
+  const linksMenu = ["/catalog", "/basket", "/rent", "/faq", "/about"];
 
   return (
     <>
