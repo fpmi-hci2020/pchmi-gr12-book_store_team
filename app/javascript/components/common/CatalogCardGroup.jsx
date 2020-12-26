@@ -45,6 +45,7 @@ const catalogCardGroup = ({
                           cards[index].authors[0] &&
                           cards[index].authors[0].name}
                       </p>
+                      <p className="price1">{`${ cards[index].price && cards[index].price } руб.`}</p>
                       {!withoutIcons && (
                         <div className="options">
                           <div
