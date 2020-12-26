@@ -146,7 +146,7 @@ class CatalogPage extends Component {
     if (response.status == 200) {
       const data = await response.json();
       this.setState({ cardsData: data });
-      console.log("Books: ", data);
+      console.log("Filtered Books: ", data);
     } else {
       console.log("Data loading error");
     }
@@ -172,7 +172,13 @@ class CatalogPage extends Component {
               )}
             </div>
             <div className="right_container">
-              <form className="filter" onSubmit={(e) => this.submitFilter(e)}>
+              <form
+                className="filter"
+                onSubmit={(e) => {
+                  this.submitFilter(e);
+                  e.preventDefault();
+                }}
+              >
                 <Input
                   label="Название"
                   type="filter"

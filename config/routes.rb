@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'about', to: 'about#index'
   get 'faq', to: 'faq#index'
   get 'rent', to: 'rent#index'
+  get 'my_orders', to: 'my_orders#index'
 
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
