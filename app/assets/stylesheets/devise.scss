@@ -1,9 +1,3 @@
-html,
-body {
-  height: 100%;
-  background-color: #F5F5F5 !important;
-}
-
 .devise {
   .container {
     height: 100%;
@@ -33,5 +27,28 @@ body {
   a:hover {
     background-color: #5E855E !important;
     color: #F5F5F5 !important;
+  }
+}
+
+.dropdown {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  top: 10%;
+  width: 200px;
+  border: 1px solid black;
+  background-color: white;
+
+  &_option {
+      border-bottom: 1px solid black;
+      padding-left: 5px;
+      color: black;
+      a {
+          text-decoration: none;
+          color: black;
+      }
+      a:hover {
+          color: #4D724D
+      }
   }
 }

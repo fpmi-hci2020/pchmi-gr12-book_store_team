@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import Header from "../common/Header";
 import Menu from "../common/Menu";
-import Input from "../common/Input";
-import Button from "../common/Button";
 import CatalogCardGroup from "../common/CatalogCardGroup";
 
 class FavoritesPage extends Component {
@@ -44,7 +42,31 @@ class FavoritesPage extends Component {
       });
   }
 
+  addToCart = async (bookId, bookName) => {
+    const response = await fetch("/api/v1/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        order: {
+          amount: 1,
+          user_id: this.props.currentUserId,
+          book_id: bookId,
+          status: 4,
+        },
+      }),
+    });
+    if (response.status === 200) {
+      const data = await response.json();
+      alert(`Книга "${bookName}" добавлена в Корзину.`);
+    } else {
+      console.log("Can not add book to favorite");
+    }
+  };
+
   render() {
+    console.log(this.state.cardsData);
     return (
       <>
         <Header />
@@ -55,6 +77,7 @@ class FavoritesPage extends Component {
               <div className="catalog">
                 <CatalogCardGroup
                   cards={this.state.cardsData}
+                  addToCart={this.addToCart}
                   withoutIcons
                   buttonText={"ДОБАВИТЬ В КОРЗИНУ"}
                 />

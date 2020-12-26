@@ -4,7 +4,7 @@ import Menu from "../common/Menu";
 import Input from "../common/Input";
 import Button from "../common/Button";
 
-import img from 'images/img.jpg'
+import img from "images/img.jpg";
 
 const UpdateForm = ({ values, onChangeHendlers, onClick }) => {
   console.log(values.email);
@@ -52,19 +52,61 @@ const UpdateForm = ({ values, onChangeHendlers, onClick }) => {
 
 const Profile = (props) => {
   const [updateProfile, setUpdateProfile] = useState(false);
-  const [FIO, setFIO] = useState("Александра Жихаревич");
-  const [email, setEmail] = useState("aliaksandra.zhykharevich@gmail.com");
-  const [phone, setPhone] = useState("+375295468914");
-  const [adress, setAdress] = useState("г. Минск");
-  const [birthDate, setbirthDate] = useState("14/08/2000");
-  const [gender, setGender] = useState("Женский");
+  const [FIO, setFIO] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [adress, setAdress] = useState();
+  const [birthDate, setbirthDate] = useState();
+  const [gender, setGender] = useState();
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/api/v1/users/${props.currentUserId}`);
+      if (response.status === 200) {
+        const data = await response.json();
+        setFIO(data.name);
+        setEmail(data.email);
+        setAdress(data.address);
+        setPhone(data.phone_number);
+        setbirthDate(data.birthdate);
+        setGender(data.genre);
+        setImage(data.avatar_url);
+        console.log("User: ", data);
+      } else {
+        console.log("Data loading error");
+      }
+    };
+    fetchData();
+  }, []);
 
   const editProfile = () => {
     setUpdateProfile(true);
   };
 
-  const onUpdateProfile = () => {
-    setUpdateProfile(false);
+  const onUpdateProfile = async () => {
+    const user = {
+      email: email,
+      address: adress,
+      name: FIO,
+      avatar_url: null,
+    };
+
+    const response = await fetch(`/api/v1/users/${props.currentUserId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: user,
+      }),
+    });
+    if (response.status === 200) {
+      console.log("OK");
+      setUpdateProfile(false);
+    } else if (response.status === 400) {
+      console.log("Can not update user");
+    }
   };
 
   const FIOChangeHandler = (e) => {
@@ -98,12 +140,15 @@ const Profile = (props) => {
         <Menu />
         <div className="content">
           <div className="user-info__container">
-            <img
-              className="user-info__image"
-              src={img}
-              width="100%"
-              height="100%"
-            />
+            <div className="user-info__image">
+              <img
+                alt="Book"
+                src={image ? image : img}
+                width="100%"
+                height="100%"
+              />
+            </div>
+
             {!updateProfile ? (
               <div className="user-info__text-info">
                 <div className="update_profile__fio">
